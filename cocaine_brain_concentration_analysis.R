@@ -16,9 +16,9 @@
 
 # From these simulations, the script calculates PK
 # exposure metrics including:
-#   - Cmax (maximum brain concentration)
-#   - Tmax (time of maximum concentration)
-#   - AUC (area under the concentration curve)
+#   *Cmax (maximum brain concentration)
+#   *Tmax (time of maximum concentration)
+#   *AUC (area under the concentration curve)
 
 # What this project demonstrates:
 #   *Data cleaning and preprocessing
