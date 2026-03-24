@@ -1,5 +1,31 @@
-# COCAINE BRAIN CONCENTRATION SCRIPT -- NO 30 MIN BREAK
+# COCAINE BRAIN CONCENTRATION PHARMACOKINETIC MODEL
+  # Author: Ava Rose Holmes
 
+# This script simulates brain cocaine concentration over time
+# during self-administration behavioral sessions using a
+# two-compartment pharmacokinetic (PK) model.
+
+# The model treats each cocaine infusion as an instantaneous
+# IV bolus into a central compartment (blood), with drug
+# exchange between the central and brain compartments and
+# first-order elimination from the central compartment.
+
+# Behavioral timestamps are used to map infusion
+# timing for each animal and session, and the model generates
+# a continuous brain concentration time course across sessions.
+
+# From these simulations, the script calculates PK
+# exposure metrics including:
+#   - Cmax (maximum brain concentration)
+#   - Tmax (time of maximum concentration)
+#   - AUC (area under the concentration curve)
+
+# What this project demonstrates:
+#   *Data cleaning and preprocessing
+#   *Event-based ODE simulation
+#   *Pharmacokinetic modeling
+#   *Time-series analysis
+#   *Data visualization
 
 # --------------------------
 # LOAD PACKAGES
@@ -199,19 +225,6 @@ sim_df_day %>% distinct(rat, session, has_infusions) %>% arrange(rat, session) %
 
 # --------------------------
 # SUMMARY
-summary_df_day <- sim_df_day %>%
-  group_by(rat, day, tod, session) %>%
-  summarise(
-    Cmax = max(CP_BRAIN, na.rm = TRUE),
-    Tmax_min = time_panel[which.max(CP_BRAIN)],
-    AUC = pracma::trapz(time_panel, CP_BRAIN),
-    .groups = "drop"
-  )
-
-cat("Simulation finished. Created: sim_df_day, summary_df_day\n",
-    "Rows - sim_df_day:", nrow(sim_df_day),
-    " | summary_df_day:", nrow(summary_df_day), "\n")
-
 summary_df_day <- sim_df_day %>%
   group_by(rat, day, tod, session) %>%
   summarise(
