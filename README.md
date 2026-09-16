@@ -1,6 +1,6 @@
 # Cocaine Brain Concentration Pharmacokinetic Model
 
-## R-based pharmacokinetic model that simulates brain cocaine concentration over time during self-administration behavioral sessions.
+## R-based pharmacokinetic model that simulates brain cocaine concentration over time during self-administration behavioral sessions in a rat model.
 
 ### What it does
 
@@ -10,9 +10,9 @@
 * Calculates Cmax, Tmax, and AUC
 * Generates heatmap visualizations of modeled brain concentration across sessions
 
-### Tools
+### Packages
 
-R • tidyverse • deSolve • pracma • ggplot2 • viridis
+tidyverse, deSolve, pracma, ggplot2, viridis
 
 ### Author
 
